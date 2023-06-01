@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Text, TextInput, Button } from 'react-native-paper';
 import { Header } from '../components/Header';
-import ScreenContainer from '../components/ScreenContainer';
 
 export default function App() {
 
@@ -16,7 +15,7 @@ export default function App() {
   }
 
   return (
-    <ScreenContainer additionalStyle={styles.container}>
+    <View style={styles.container}>
       <StatusBar style="auto" />
       <Header title='spacecraft'/>
       <View style={styles.form}>
@@ -36,7 +35,7 @@ export default function App() {
         <Button mode='contained'>Login</Button>
         <Text variant="labelMedium" style={styles.terms}>Read Terms and conditions.</Text> 
       </View>
-    </ScreenContainer>
+    </View>
   );
 }
 

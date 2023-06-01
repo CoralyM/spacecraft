@@ -1,6 +1,7 @@
 // App.tsx
 import React from 'react';
 import { Provider as PaperProvider } from 'react-native-paper';
+import { NetworkProvider } from 'react-native-offline';
 
 import LoginScreen from './src/screens/LoginScreen';
 import { TermsScreen } from './src/screens/TermsScreen';
@@ -15,12 +16,14 @@ const App = () => {
   return (
     <PaperProvider>
       <QueryClientProvider client={queryClient}>
-        {/*<ScrollView>
+        <NetworkProvider>
+          {/*<ScrollView>
                   <LoginScreen />
                   <TermsScreen />
                 </ScrollView>
                 */}
-        <StarshipFeedScreen/>
+          <StarshipFeedScreen/>
+        </NetworkProvider>
       </QueryClientProvider >
     </PaperProvider>
   );

@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
-import { StyleSheet, StatusBar, FlatList, RefreshControl } from "react-native";
+import { StyleSheet, StatusBar, FlatList, RefreshControl, View } from "react-native";
 import { Text } from 'react-native-paper';
 import { default as data } from "../../api/data.json";
 import StarshipFeedItem from "../components/StarshipFeedItem";
-import ScreenContainer from "../components/ScreenContainer";
 import { useStarships } from "../hooks/UseStarships";
 import {
     Placeholder,
@@ -11,6 +10,7 @@ import {
     PlaceholderLine,
     Fade
   } from "rn-placeholder";
+import { Offline } from "../components/Offline";
 
 export const StarshipFeedScreen = () => {
 
@@ -18,7 +18,7 @@ export const StarshipFeedScreen = () => {
 
     if (starships.status === 'loading') {
         return (
-            <ScreenContainer additionalStyle={{alignItems: 'center', justifyContent: 'center', padding: 20}}>
+            <View style={{alignItems: 'center', justifyContent: 'center', padding: 20}}>
                 <Placeholder Animation={Fade}>
                     <PlaceholderMedia style={{width: '100%', height: 250, marginBottom: 20}} />
                     <PlaceholderLine width={80} />
@@ -33,18 +33,18 @@ export const StarshipFeedScreen = () => {
                     <PlaceholderLine width={40} />
                     <PlaceholderLine width={30} />
                 </Placeholder>
-            </ScreenContainer>
+            </View>
         )
     } else if (starships.status === 'error') {
         return (
-            <ScreenContainer additionalStyle={{alignItems: 'center', justifyContent: 'center'}}>
+            <View style={{alignItems: 'center', justifyContent: 'center'}}>
                 <Text variant="headlineMedium">Error loading ships</Text>
-            </ScreenContainer>
+            </View>
         )
     }
 
     return (
-        <ScreenContainer additionalStyle={styles.container}>
+        <View style={styles.container}>
             <FlatList
                 data={data.results}
                 renderItem={({item, index}) => <StarshipFeedItem key={item.name + '-' + index} item={item}/>}
@@ -52,8 +52,9 @@ export const StarshipFeedScreen = () => {
                 refreshControl={
                     <RefreshControl refreshing={starships.isFetching} onRefresh={starships.refetch}/>
                 }
+                ListHeaderComponent={<Offline />}
             />
-        </ScreenContainer>
+        </View>
     );
 };
 

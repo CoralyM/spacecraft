@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Image, Alert } from "react-native";
 import { Appbar, Text } from "react-native-paper";
-import ScreenContainer from "../components/ScreenContainer";
 
 export const TermsScreen = () => {
   function goBack() {
@@ -11,7 +10,7 @@ export const TermsScreen = () => {
   }
 
   return (
-    <ScreenContainer>
+    <View>
       <Appbar.Header>
         <Appbar.BackAction onPress={goBack} />
         <Appbar.Content title="Terms and Conditions" />
@@ -104,6 +103,6 @@ export const TermsScreen = () => {
 
         <Text style={{ marginBottom: 128 }}>May the force be with you</Text>
       </View>
-    </ScreenContainer>
+    </View>
   );
 };

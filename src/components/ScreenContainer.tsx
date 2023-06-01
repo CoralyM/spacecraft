@@ -1,19 +1,45 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import type { ReactNode } from "react";
+import React from "react";
+import { ScrollView, StyleSheet, View } from "react-native";
+import { Text } from "react-native-paper";
 
-const ScreenContainer = ({children, additionalStyle}: any) => {
-  return (
-    <View style={[styles.container, additionalStyle]}>
-      {children}
-    </View>
-  )
+// Import <Offline /> component
+
+interface ScreenContainerProps {
+  title: string;
+  children?: ReactNode;
+  withSeparatorFooter?: boolean;
 }
 
-export default ScreenContainer
+export const ScreenContainer = ({
+  title,
+  children,
+  withSeparatorFooter = false,
+}: ScreenContainerProps) => {
+  return (
+    <ScrollView style={styles.container} nestedScrollEnabled={true}>
+      {/* <Offline /> */}
+      <Text variant="headlineMedium" style={styles.headerText}>
+        {title}
+      </Text>
+
+      {children}
+      {withSeparatorFooter && <View style={styles.footer} />}
+    </ScrollView>
+  );
+};
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-    }
-})
+  container: {
+    paddingTop: 24,
+    paddingHorizontal: 24,
+    marginTop: 36,
+  },
+  headerText: {
+    fontWeight: "bold",
+    marginBottom: 20,
+  },
+  footer: {
+    paddingBottom: 256,
+  },
+});
