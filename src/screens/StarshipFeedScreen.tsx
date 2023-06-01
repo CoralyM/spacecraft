@@ -60,7 +60,7 @@ export const StarshipFeedScreen = () => {
       <FlatList
         data={data.results}
         renderItem={({ item, index }) => (
-          <StarshipFeedItem key={item.name + "-" + index} item={item} />
+          <StarshipFeedItem key={item.name + "-" + index} {...item} />
         )}
         keyExtractor={(item, index) => item.name + "-" + index}
         refreshControl={
