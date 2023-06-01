@@ -10,7 +10,8 @@ export const StarshipFeedScreen = () => {
     <ScreenContainer additionalStyle={styles.container}>
         <FlatList
             data={data.results}
-            renderItem={StarshipFeedItem}
+            renderItem={({item, index}) => <StarshipFeedItem key={item.name + '-' + index} item={item}/>}
+            keyExtractor={(item, index) => item.name + '-' + index}
         />
     </ScreenContainer>
   );
