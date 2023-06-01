@@ -36,7 +36,7 @@ export default function App() {
         <Button mode='contained'>Login</Button>
         <Text variant="labelMedium" style={styles.terms}>Read Terms and conditions.</Text> 
       </View>
-    </Screen>
+    </ScreenContainer>
   );
 }
 

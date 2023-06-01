@@ -104,6 +104,6 @@ export const TermsScreen = () => {
 
         <Text style={{ marginBottom: 128 }}>May the force be with you</Text>
       </View>
-    </Scre>
+    </ScreenContainer>
   );
 };
