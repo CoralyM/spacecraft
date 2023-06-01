@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Text, TextInput, Button } from 'react-native-paper';
 import { Header } from '../components/Header';
+import ScreenContainer from '../components/ScreenContainer';
 
 export default function App() {
 
@@ -15,7 +16,7 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
+    <ScreenContainer additionalStyle={styles.container}>
       <StatusBar style="auto" />
       <Header title='spacecraft'/>
       <View style={styles.form}>
@@ -35,14 +36,12 @@ export default function App() {
         <Button mode='contained'>Login</Button>
         <Text variant="labelMedium" style={styles.terms}>Read Terms and conditions.</Text> 
       </View>
-    </View>
+    </Screen>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
