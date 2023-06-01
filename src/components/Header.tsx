@@ -7,7 +7,6 @@ type HeaderProps = {
 };
 
 export const Header = ({ title }: HeaderProps) => {
-
   return (
     <View style={[styles.container]}>
       <Text variant="headlineMedium" style={styles.title}>
@@ -19,11 +18,11 @@ export const Header = ({ title }: HeaderProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'purple',
+    backgroundColor: "purple",
     alignItems: "center",
     justifyContent: "center",
     height: 250,
-    width: '100%',
+    width: "100%",
   },
   title: {
     fontWeight: "bold",
