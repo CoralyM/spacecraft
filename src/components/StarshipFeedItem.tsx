@@ -1,9 +1,9 @@
 import { StyleSheet } from "react-native";
 import React from "react";
 import { Card, Text } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native";
 
 import { useImage } from "../hooks/UseImage";
-import { useNavigation } from "@react-navigation/native";
 import { Routes } from "../navigation/Routes";
 
 interface StarshipFeedItemProps {
@@ -21,7 +21,12 @@ const StarshipFeedItem = (props: StarshipFeedItemProps) => {
   const navigation = useNavigation();
 
   return (
-    <Card style={styles.container} onPress={() => navigation.navigate(Routes.STARSHIP_DETAIL_SCREEN, {props})}>
+    <Card
+      style={styles.container}
+      onPress={() =>
+        navigation.navigate(Routes.STARSHIP_DETAIL_SCREEN, { props })
+      }
+    >
       <Card.Cover source={image} />
       <Card.Title title={name} />
       <Card.Content>

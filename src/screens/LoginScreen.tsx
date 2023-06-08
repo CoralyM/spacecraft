@@ -6,6 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 
 import { Header } from "../components/Header";
 import { Routes } from "../navigation/Routes";
+import { useAuthentication } from "../context/Authentification";
 
 export default function App() {
   const [email, setEmail] = useState("");
@@ -17,6 +18,12 @@ export default function App() {
   };
 
   const navigation = useNavigation();
+
+  const { setUser } = useAuthentication();
+
+  const handleLogin = () => {
+    setUser(true);
+  };
 
   function navigateToTerms() {
     navigation.navigate(Routes.TERMS_SCREEN);
@@ -49,7 +56,7 @@ export default function App() {
             />
           }
         />
-        <Button mode="contained">Login</Button>
+        <Button mode="contained" onPress={handleLogin}>Login</Button>
         <TouchableOpacity onPress={navigateToTerms}>
           <Text variant="labelMedium" style={styles.terms}>
             Read Terms and conditions.

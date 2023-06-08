@@ -11,18 +11,21 @@ import { TermsScreen } from "./src/screens/TermsScreen";
 import { StarshipFeedScreen } from "./src/screens/StarshipFeedScreen";
 import StorybookUIRoot from "./.storybook";
 import { Navigator } from "./src/navigation/Navigator";
+import { AuthenticationProvider } from "./src/context/Authentification";
 
 const App = () => {
   const queryClient = new QueryClient();
 
   return (
-    <PaperProvider>
-      <QueryClientProvider client={queryClient}>
-        <NetworkProvider>
-          <Navigator />
-        </NetworkProvider>
-      </QueryClientProvider>
-    </PaperProvider>
+    <AuthenticationProvider>
+      <PaperProvider>
+          <QueryClientProvider client={queryClient}>
+            <NetworkProvider>
+              <Navigator />
+            </NetworkProvider>
+          </QueryClientProvider>
+      </PaperProvider>
+    </AuthenticationProvider>
   );
 };
 
