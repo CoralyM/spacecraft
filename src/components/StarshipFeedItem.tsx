@@ -5,15 +5,15 @@ import { Card, Text } from "react-native-paper";
 import { useImage } from "../hooks/UseImage";
 
 interface StarshipFeedItemProps {
-    name: string;
-    model: string;
-    manufacturer: string;
-    cost_in_credits: string;
-    crew: string;
-  }
+  name: string;
+  model: string;
+  manufacturer: string;
+  cost_in_credits: string;
+  crew: string;
+}
 
 const StarshipFeedItem = (props: StarshipFeedItemProps) => {
-    const { name, model, manufacturer, cost_in_credits, crew } = props;
+  const { name, model, manufacturer, cost_in_credits, crew } = props;
   const image = useImage(name);
 
   return (

@@ -1,9 +1,11 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { Text, TextInput, Button } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native";
 
 import { Header } from "../components/Header";
+import { Routes } from "../navigation/Routes";
 
 export default function App() {
   const [email, setEmail] = useState("");
@@ -13,6 +15,12 @@ export default function App() {
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
   };
+
+  const navigation = useNavigation();
+
+  function navigateToTerms() {
+    navigation.navigate(Routes.TERMS_SCREEN);
+  }
 
   return (
     <View style={styles.container}>
@@ -42,9 +50,11 @@ export default function App() {
           }
         />
         <Button mode="contained">Login</Button>
-        <Text variant="labelMedium" style={styles.terms}>
-          Read Terms and conditions.
-        </Text>
+        <TouchableOpacity onPress={navigateToTerms}>
+          <Text variant="labelMedium" style={styles.terms}>
+            Read Terms and conditions.
+          </Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
