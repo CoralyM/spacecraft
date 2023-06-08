@@ -1,8 +1,8 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
-import { Button } from "react-native-paper";
-
+import { Appbar, Button } from "react-native-paper";
+import { getHeaderTitle } from "@react-navigation/elements";
 import LoginScreen from "../screens/LoginScreen";
 import { TermsScreen } from "../screens/TermsScreen";
 import { StarshipFeedScreen } from "../screens/StarshipFeedScreen";
@@ -26,7 +26,8 @@ export const Navigator = () => {
               component={StarshipFeedScreen}
               options={{
                 headerShown: true,
-                headerTitle: "Starhships",
+                headerTitle: "Starships",
+                header: (props) => <CustomNavigationBar {...props} />
               }}
             />
             <Stack.Screen
@@ -51,6 +52,16 @@ export const Navigator = () => {
     </NavigationContainer>
   );
 };
+
+const CustomNavigationBar = ({ navigation, route, options, back}) => {
+    const title = getHeaderTitle(options, route.name);
+    return (
+        <Appbar>
+            {back ? <Appbar.BackAction onPress={navigation.goBack} /> : null}
+            <Appbar.Content title={title}/>
+        </Appbar>
+    )
+}
 
 const ModalCloseButton = () => {
   const navigation = useNavigation();
